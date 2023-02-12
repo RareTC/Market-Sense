@@ -2,4 +2,4 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-module.exports = mongoose.model('Idea', ideaSchema);
+module.exports = mongoose.model('Ticker', ideaSchema);

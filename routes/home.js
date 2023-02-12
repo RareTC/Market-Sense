@@ -34,4 +34,9 @@ router.get('/logout', function(req, res) {
   });
 });
 
+router.get('/ticker', function(req, res, next) {
+  const ticker = req.query.ticker;
+  console.log(`ticker: ${ticker}`)
+  res.render('resource');
+});
 module.exports = router;

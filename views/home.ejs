@@ -1,18 +1,10 @@
 <%- include('./partials/header') %>
-
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <form class="d-flex">
-      <input class="form-control me-2" type="text" placeholder="Search">
-      <button class="btn btn-primary" type="button">Search</button>
+    <form class="d-flex" action="/" method="GET">
+      <input class="form-control me-2" type="text" name="ticker" placeholder="Search a Company Ticker">
+      <button class="btn btn-primary" type="submit">Search</button>
     </form>
   </body>
 </html>
