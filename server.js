@@ -12,7 +12,7 @@ require('./config/database');
 require('./config/passport');
 
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/home');
 var ideasRouter = require('./routes/ideas');
 var reviewsRouter = require('./routes/reviews');
 
