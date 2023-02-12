@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
-
+const token =process.env.STOCKDATA_TOKEN;
+const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -34,9 +35,20 @@ router.get('/logout', function(req, res) {
   });
 });
 
-router.get('/ticker', function(req, res, next) {
+
+router.get('/', function(req, res, next) {
   const ticker = req.query.ticker;
-  console.log(`ticker: ${ticker}`)
-  res.render('resource');
+   if (!ticker) return res.render('tickers', {ticker : null })
+   fetch(`${ROOT_URL}?symbols=${ticker}api_token=${token}`)
+   .then(res => res.json())
+   .then(userData => {
+     res.render('tickers', {data});
+   })
 });
+
+// router.get('/ticker', function(req, res, next) {
+//   const ticker = req.query.ticker;
+//   console.log(`ticker: ${ticker}`)
+//   res.render('resource');
+// });
 module.exports = router;
