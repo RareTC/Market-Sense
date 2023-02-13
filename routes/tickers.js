@@ -1,18 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const tickersCtrl = require('../controllers/tickers');
+const ensureLoggedIn = require('../config/ensureLoggedIn');
+const ticker = require('../models/ticker');
+
 
 const token =process.env.STOCKDATA_TOKEN;
 const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  const ticker = req.query.ticker;
-   if (!ticker) return res.render('tickers', {ticker : null })
-   fetch(`${ROOT_URL}?symbols=${ticker}api_token=${token}`)
-   .then(res => res.json())
-   .then(userData => {
-     res.render('tickers', {data});
-   })
-});
+//GET /tickers/new
+// router.get('/new', ensureLoggedIn, tickersCtrl.new);
+// //POST
+// router.post('/', ensureLoggedIn, tickersCtrl.create);
+
+//API Data get request
+router.get('/', tickersCtrl.index); 
+
+//ttps://api.stockdata.org/v1/data/quote?symbols=AAPL&
 
 module.exports = router;

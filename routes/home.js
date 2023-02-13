@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
+const homeCtrl = require('../controllers/home');
 const token =process.env.STOCKDATA_TOKEN;
 const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
 
@@ -36,15 +37,13 @@ router.get('/logout', function(req, res) {
 });
 
 
-router.get('/', function(req, res, next) {
-  const ticker = req.query.ticker;
-   if (!ticker) return res.render('tickers', {ticker : null })
-   fetch(`${ROOT_URL}?symbols=${ticker}api_token=${token}`)
-   .then(res => res.json())
-   .then(userData => {
-     res.render('tickers', {data});
-   })
-});
+
+
+
+//https://api.stockdata.org/v1/data/quote?symbols=&api_token=
+
+//the news feed I want
+//https://api.stockdata.org/v1/news/all?exchanges=NASDAQ,NYSE&api_token=qzQec1d0UVq1SQdbc2nsU7r8mf1Sske9aNNvYzqB
 
 // router.get('/ticker', function(req, res, next) {
 //   const ticker = req.query.ticker;

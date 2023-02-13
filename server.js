@@ -12,7 +12,7 @@ require('./config/database');
 require('./config/passport');
 
 
-var indexRouter = require('./routes/home');
+var homeRouter = require('./routes/home');
 var tickersRouter = require('./routes/tickers');
 var reviewsRouter = require('./routes/reviews');
 
@@ -41,8 +41,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', indexRouter);
-app.use('/', tickersRouter);
+app.use('/', homeRouter);
+app.use('/tickers', tickersRouter);
 app.use('/', reviewsRouter);
 
 

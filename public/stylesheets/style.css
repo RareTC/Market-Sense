@@ -8,11 +8,15 @@ a {
 }
 .login {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   height: 34px;
 }
 
-.login img {
+.Glogo {
   height: 30px;
+  width: 30px;
+}
+.nav-link {
+  justify-content: right;
 }

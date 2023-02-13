@@ -12,14 +12,14 @@
   <nav class="navbar navbar-expand-sm bg-primary navbar-dark justify-content-center">
     <a href="/"	<%- title === 'Home' ? 'class="active"' : '' %>>
       Home</a>
-      <a href="/ideas"	<%- title === 'Investing Ideas' ? 'class="active"' : '' %>>
+      <a href="/tickers"	<%- title === 'Investing Ideas' %>>
         Investing Ideas</a>
-        <a href="news"	<%- title === 'News' ? 'class="active"' : '' %>>
+        <a href="news"	<%- title === 'News' %>>
           News</a>
       <% if (user) { %>
-      <a class="nav-link justify-content-end" href="/logout">Log Out <img alt="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer"><%= user.name %></a>
+      <a class="nav-link" href="/logout">Log Out <img alt="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer"><%= user.name %></a>
     <% } else { %>
-      <a class="nav-link justify-content-end" href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+      <a class="nav-link" href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" class="Glogo"></a>
     <% } %>
   </nav>
   <main>
