@@ -7,7 +7,7 @@ const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
 module.exports ={
     // create,
     // new: newTicker,
-    // idea,
+    show,
     index
   
 };
@@ -18,6 +18,7 @@ async function index(req, res) {
     try {
         const tickerData = await fetch(`${ROOT_URL}?symbols=${symbol}&api_token=${token}`)
         .then(res => res.json()) 
+        .then(data => data.data)
         const err = null
         res.render('home', { tickerData, title: 'ticker index page', err});
         console.log(tickerData)
@@ -35,6 +36,6 @@ async function index(req, res) {
     
 // }
 
-// function idea() {
-
-// }
+function show(req, res) {
+    
+}

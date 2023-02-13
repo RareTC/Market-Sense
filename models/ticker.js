@@ -12,7 +12,6 @@ const tickerSchema = new Schema ({
         day_change: Number,
         volume: Number
     },
-    // timestamps: true
 });
 
 module.exports = mongoose.model('Ticker', tickerSchema);
