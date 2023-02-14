@@ -4,18 +4,36 @@
     <input class="form-control me-2" type="text" name="symbol" placeholder="Search a Company Ticker">
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
-<% if (tickerData) { %>
-    <% tickerData.forEach(function(t) { %> 
-      <%= t.ticker %>
-      <%= t.name %>
-      <%= t.exchange_short %>
-      <%= t.price %>
-      <%= t['52_week_high'] %>
-      <%= t['52_week_low'] %>
-      <%= t.day_change %>
-      <%= t.volume %>
-    <% }); %>
-  <% } %>
+<table>
+  <thead>
+    <tr>
+      <th>Ticker:</th>
+      <th>Co. Name:</th>
+      <th>Listing Exchange:</th>
+      <th>Price:</th>
+      <th>52 Wk High:</th>
+      <th>52 Wk Low:</th>
+      <th>Day Change in Price:</th>
+      <th>Volume Traded:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% if (tickerData) { %>
+        <% tickerData.forEach(function(t) { %> 
+          <td><%= t.ticker %></td>
+          <td><%= t.name %></td>
+          <td><%= t.exchange_short %></td>
+          <td><%= t.price %></td>
+          <td><%= t['52_week_high'] %></td>
+          <td><%= t['52_week_low'] %></td>
+          <td><%= t.day_change %></td>
+          <td><%= t.volume %></td>
+        <% }); %>
+      <% } %>
+    </tr>
+  </tbody>
+</table>
 
   <a href="/tickers">Share What You See!</a>
 
