@@ -5,14 +5,13 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 const ticker = require('../models/ticker');
 
 
-const token =process.env.STOCKDATA_TOKEN;
-const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
+// const token =process.env.STOCKDATA_TOKEN;
+// const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
 
-//GET /tickers/new
-// router.get('/new', ensureLoggedIn, tickersCtrl.new);
 
-// //POST
-// router.post('/', ensureLoggedIn, tickersCtrl.create);
+//all routes start with /movies
+//GET
+router.get('/:ticker', ensureLoggedIn, tickersCtrl.show);
 
 //API Data get request
 router.get('/', tickersCtrl.index); 

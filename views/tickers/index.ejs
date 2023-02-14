@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<form class="d-flex" action="/" method="GET">
+<form class="d-flex" action="/tickers" method="GET">
     <input class="form-control me-2" type="text" name="symbol" placeholder="Search a Company Ticker">
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
@@ -18,9 +18,9 @@
     </tr>
   </thead>
   <tbody>
+    <% if (tickerData) { %>
+      <% tickerData.forEach(function(t) { %> 
     <tr>
-      <% if (tickerData) { %>
-        <% tickerData.forEach(function(t) { %> 
           <td><%= t.ticker %></td>
           <td><%= t.name %></td>
           <td><%= t.exchange_short %></td>
@@ -29,12 +29,12 @@
           <td><%= t['52_week_low'] %></td>
           <td><%= t.day_change %></td>
           <td><%= t.volume %></td>
+        </tr>
+        <a href="/tickers/<%= t.ticker%>">Share What You See!</a>
         <% }); %>
       <% } %>
-    </tr>
-  </tbody>
-</table>
+      </tbody>
+    </table>
 
-  <a href="/tickers">Share What You See!</a>
 
   <%- include('../partials/footer') %>

@@ -11,9 +11,8 @@ module.exports = {
 
 async function index(req, res) {
     const symbol = req.query.symbol;
-    // if (!symbol) return res.render('tickers', { symbol: null })
     try {
-        const newsData = await fetch(`${ROOT_URL}?symbols=${symbol}&filter_entities=true&api_token=${token}`)
+        const newsData = await fetch(`${ROOT_URL}?symbols=${symbol}&filter_entities=&language=en&api_token=${token}`)
         .then(res => res.json()) 
         .then(data => data.data)
         const err = null

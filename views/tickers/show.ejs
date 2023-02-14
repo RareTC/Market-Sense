@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+<h1>Trading Ideas for *Insert Ticker Symbol* </h1>
+<td><%= ticker.ticker %></td>
+    <form action="/reviews" method="POST">
+        <label>Outlook</label>
+            <select name="outlook">
+                <option value="Long">Long</option>
+                <option value="Short">Short</option>
+            </select>
+        <label>Timeframe</label>
+        <select name="timeframe">
+            <option value="Weeks">Weeks</option>
+            <option value="Months">Months</option>
+            <option value="years">Years</option>
+        </select>
+        <label>Description</label>
+            <textarea name="strategy" cols="30" rows="10"></textarea>
+    </form>
+
+    <%- include('../partials/footer') %>
+
