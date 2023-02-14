@@ -5,7 +5,6 @@ const token =process.env.STOCKDATA_TOKEN;
 const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
 
 module.exports = {
-    // create,
     show,
     new: newTicker,
     index
@@ -54,17 +53,6 @@ function formatTickerData(data) {
     }))
 }
 
-// function create(req, res) {
-//    const outlook = new Ticker(req.body);
-//    outlook.save(function(err) {
-//     if(err) return res.redirect('/tickers/new')
-//     console.log(ticker);
-//     res.redirect(`tickers/${ticker._id}`)
-//    }) 
-// }
-
-
-
 async function show(req, res) {
     const symbol = req.params.ticker;
     console.log('are we here?')
@@ -73,12 +61,11 @@ async function show(req, res) {
         .then(res => res.json()) 
         .then(data => data.data)
         let ticker = tickerData[0];
-        console.log(tickerData)
+        // console.log(tickerData)
         const outlook = Ticker.findOne({ticker:symbol}, function(err, doc){
             console.log(ticker, doc)
             res.render('tickers/show', { ticker, doc, title: symbol });
         });
-        // console.log(outlook)
     } catch (err) {
         console.log(err)
         const tickerData = null
