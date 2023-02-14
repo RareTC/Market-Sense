@@ -20,3 +20,8 @@ a {
 .nav-link {
   justify-content: right;
 }
+
+.newsimg {
+  height: 50px;
+  width: 50px;
+}

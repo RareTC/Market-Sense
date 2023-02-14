@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
-const homeCtrl = require('../controllers/home');
 const token =process.env.STOCKDATA_TOKEN;
 const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
 

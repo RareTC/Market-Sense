@@ -14,7 +14,7 @@ require('./config/passport');
 
 var homeRouter = require('./routes/home');
 var tickersRouter = require('./routes/tickers');
-var reviewsRouter = require('./routes/reviews');
+var newsfeedRouter = require('./routes/newsfeed');
 
 
 var app = express();
@@ -42,8 +42,9 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', homeRouter);
+app.use('/newsfeed', newsfeedRouter);
 app.use('/tickers', tickersRouter);
-app.use('/', reviewsRouter);
+
 
 
 // catch 404 and forward to error handler

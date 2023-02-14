@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+    <form class="d-flex" action="/newsfeed" method="GET">
+        <input class="form-control me-2" type="text" name="symbol" placeholder="Search a Company Ticker">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <% if (newsData) { %>
+        <% newsData.forEach(function(n) { %> <br>
+          <%= n.title %> <br>
+          <%= n.description %> <br>
+          <a href="<%= n.url %>">Link to Article</a> <br>
+          <img src="<%= n.image_url %>" class="newsimg"> <br>
+          <%= n.published_at %><br>
+        <% }); %>
+      <% } %>
+
+<%- include('../partials/footer') %>
