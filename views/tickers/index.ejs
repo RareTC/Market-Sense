@@ -1,3 +1,5 @@
+<%- include('../partials/header') %>
+
 <form class="d-flex" action="/" method="GET">
     <input class="form-control me-2" type="text" name="symbol" placeholder="Search a Company Ticker">
     <button class="btn btn-primary" type="submit">Search</button>
@@ -16,3 +18,5 @@
   <% } %>
 
   <a href="/tickers">Share What You See!</a>
+  
+  <%- include('../partials/footer') %>

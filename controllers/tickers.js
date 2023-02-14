@@ -39,3 +39,5 @@ async function index(req, res) {
 // function show(req, res) {
     
 // }
+
+//tickerData for each int he array create a new ticker with those attributes defined in the ticketSchema 

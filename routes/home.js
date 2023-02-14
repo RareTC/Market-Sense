@@ -36,10 +36,6 @@ router.get('/logout', function(req, res) {
   });
 });
 
-//https://api.stockdata.org/v1/data/quote?symbols=&api_token=
-
-//the news feed I want
-//https://api.stockdata.org/v1/news/all?exchanges=NASDAQ,NYSE&api_token=qzQec1d0UVq1SQdbc2nsU7r8mf1Sske9aNNvYzqB
 
 // router.get('/ticker', function(req, res, next) {
 //   const ticker = req.query.ticker;
