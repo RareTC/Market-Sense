@@ -36,10 +36,6 @@ router.get('/logout', function(req, res) {
   });
 });
 
-
-
-
-
 //https://api.stockdata.org/v1/data/quote?symbols=&api_token=
 
 //the news feed I want

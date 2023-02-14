@@ -6,18 +6,6 @@
       <input class="form-control me-2" type="text" name="symbol" placeholder="Search a Company Ticker">
       <button class="btn btn-primary" type="submit">Search</button>
     </form>
-    <% tickerData.forEach(function(t) { %> 
-      <%= t.ticker %>
-      <%= t.name %>
-      <%= t.exchange_short %>
-      <%= t.price %>
-      <%= t['52_week_high'] %>
-      <%= t['52_week_low'] %>
-      <%= t.day_change %>
-      <%= t.volume %>
-    <% }); %>
-
-    <a href="/tickers">Share What You See!</a>
   </body>
 </html>
 
