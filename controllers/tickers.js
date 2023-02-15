@@ -55,7 +55,6 @@ function formatTickerData(data) {
 
 async function show(req, res) {
     const symbol = req.params.ticker;
-    console.log('are we here?')
     try {
         const tickerData = await fetch(`${ROOT_URL}?symbols=${symbol}&api_token=${token}`)
         .then(res => res.json()) 

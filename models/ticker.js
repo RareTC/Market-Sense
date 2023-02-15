@@ -10,6 +10,9 @@ const reviewSchema = new Schema ({
                 type: String,
                 enum: ['Weeks', 'Months', 'Years']
         },
+        strategy: {
+                type: String
+        },
         user: {
                 type: Schema.Types.ObjectId,
                 ref: 'User',
