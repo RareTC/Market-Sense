@@ -2,7 +2,7 @@
 
 <h1>Trading Ideas for *Insert Ticker Symbol* </h1>
 <div><%= ticker.ticker %></div>
-    <form action="/tickers/<%= ticker._id %>/reviews" method="POST">
+    <form action="/tickers/<%= ticker.ticker %>/reviews" method="POST">
         <label>Outlook</label>
             <select name="outlook">
                 <option value="Long">Long</option>
@@ -18,6 +18,51 @@
             <textarea name="strategy" cols="30" rows="10"></textarea>
         <input type="submit" value="Add Review">
     </form>
+  
+    <% if (ticker.reviews.length) { %>
+        <table>
+            <thead>
+              <tr>
+                <th>Outlook</th>
+                <th>Timeframe</th>
+                <th>Strategy</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% ticker.reviews.forEach(function(r) { %>
+
+                <tr>
+                  <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer"> <%= r.userName %></td>
+                  <td><%= r.createdAt.toLocaleDateString() %></td>
+                  <td><%= r.strategy %></td>
+                  <td><%= r.outlook %></td>
+                  <td><%= r.timeframe %></td>
+
+                  <td>
+                      <% if (user?._id.equals(r.user)) { %>
+                        <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                          <button type="submit">X</button>
+                        </form>
+                      <% } %>
+                  </td>
+                </tr>
+              <% }); %>
+              <tr>
+                <td colspan="2"></td>
+                <td>
+                  <strong>
+                    <%= (total / ticker.reviews.length).toFixed(1) %>
+                  </strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% } else { %>
+          <h5>No Reviews Yet</h5>
+        <% } %>
+          
 
     <%- include('../partials/footer') %>
 

@@ -61,10 +61,10 @@ async function show(req, res) {
         .then(res => res.json()) 
         .then(data => data.data)
         let ticker = tickerData[0];
-        // console.log(tickerData)
-        const outlook = Ticker.findOne({ticker:symbol}, function(err, doc){
+        console.log(tickerData)
+        Ticker.findOne({ticker:symbol}, function(err, ticker){
             // console.log(ticker, doc)
-            res.render('tickers/show', { ticker, doc, title: symbol });
+            res.render('tickers/show', { ticker, title: symbol });
         });
     } catch (err) {
         console.log(err)
