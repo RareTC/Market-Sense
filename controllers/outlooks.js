@@ -2,7 +2,7 @@ const Ticker = require('../models/ticker');
 
 module.exports = {
     create, 
-    // delete: deleteReview
+    delete: deleteOutlook
 };
 
 function create(req,res) {
@@ -16,6 +16,18 @@ function create(req,res) {
         ticker.outlooks.push(req.body);
         ticker.save(function(err) {
             res.redirect(`/tickers/${ticker.ticker}`);
+        });
+    });
+}
+
+function deleteOutlook(req, res, next) {
+    Ticker.findOne({'outlooks._id': req.params.id, 'outlooks.user': req.user._id}).then(function(ticker) {
+        if(!ticker) return res.redirect('/tickers');
+        ticker.outlooks.remove(req.params.id);
+        ticker.save().then(function() {
+            res.redirect(`/tickers/${ticker.ticker}`);
+        }).catch(function(err) {
+            return next(err);
         });
     });
 }

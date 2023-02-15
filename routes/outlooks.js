@@ -5,5 +5,7 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // POST 
 router.post('/tickers/:id/outlooks', ensureLoggedIn, outlooksCtrl.create);
+//DELETE 
+router.delete('/outlooks/:id', ensureLoggedIn, outlooksCtrl.delete);
 
 module.exports = router;

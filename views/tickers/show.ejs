@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-    <h1>Trading Ideas for *Insert Ticker Symbol* </h1>
+    <h1>Latest Data:</h1>
     <!-- will reference more data here, but this is from my API for live data.  -->
     <div>
         <%= ticker.ticker %>
@@ -27,7 +27,7 @@
         <%= ticker.volume %>
     </div>
     <form action="/tickers/<%= ticker._id %>/outlooks" method="POST">
-        <label>Outlook</label>
+        <label>Position</label>
         <select name="position">
             <option value="Long">Long</option>
             <option value="Short">Short</option>
@@ -39,9 +39,45 @@
             <option value="years">Years</option>
         </select>
         <label>strategy</label>
-        <textarea name="strategy" cols="30" rows="10"></textarea>
+        <textarea name="strategy" cols="30" rows="10" placeholder="Please include data at time of outlook to refer back to. "></textarea>
         <input type="submit" value="Add Outlook">
     </form>
+
+    <% if (ticker.outlooks.length) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>User: </th>
+                    <th>Position:</th>
+                    <th>Timeframe:</th>
+                    <th>Strategy:</th>
+                    <th>Date made:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% ticker.outlooks.forEach(function(o) { %>
+                    <tr>
+                        <td class="review-user"><img alt="avatar" src="<%= o.userAvatar %>" referrerpolicy="no-referrer"><%= o.userName %></td>
+                        <td><%= o.position %></td>
+                        <td><%= o.timeframe %></td>
+                        <td><%= o.strategy %></td>
+                        <td><%= o.createdAt.toLocaleDateString() %></td>
+                        <td>
+                            <% if (user?._id.equals(o.user)) { %>
+                                <form action="/outlooks/<%= o._id %>?_method=DELETE" method="POST">
+                                    <button type="submit">Remove</button>
+                                </form>
+
+                            <% } %>
+                        </td>
+                    </tr>
+
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <h5>No Outlooks made, be the first!</h5>
+    <% } %>
 
 
     <%- include('../partials/footer') %>
