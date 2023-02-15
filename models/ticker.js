@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const reviewSchema = new Schema ({
-        outlook: {
+const outlookSchema = new Schema ({
+        position: {
                 type: String,
                 enum: ['Long', 'Short']
         },
@@ -24,10 +24,21 @@ const reviewSchema = new Schema ({
         timestamps: true
 });
 const tickerSchema = new Schema ({
-        ticker: String,
+        ticker: { 
+                type: String,
+                unique: true
+        },
+        type: String,
         name: String,
         exchange: String,
-        reviews : [reviewSchema]
+        price: String,
+        dayChange: String,
+        yearHigh: String,
+        yearLow: String,
+        volume: String,
+        outlooks : [outlookSchema]
+}, {
+        timestamps: true
 });
 
 module.exports = mongoose.model('Ticker', tickerSchema);

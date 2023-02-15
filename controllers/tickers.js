@@ -1,7 +1,8 @@
 const Ticker = require('../models/ticker');
 const Home = require('../models/home');
+const ticker = require('../models/ticker');
 
-const token =process.env.STOCKDATA_TOKEN;
+const token = process.env.STOCKDATA_TOKEN;
 const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
 
 module.exports = {
@@ -12,21 +13,21 @@ module.exports = {
 };
 
 async function index(req, res) {
-    const symbol = req.query.symbol;
+    const symbol = req.query.symbol.replaceAll(' ', '');
     try {
         const tickerData = await fetch(`${ROOT_URL}?symbols=${symbol}&api_token=${token}`)
         .then(res => res.json()) 
         .then(data => data.data)
         const err = null
         const outlook = formatTickerData (tickerData) 
-        console.log(outlook)
+        // console.log(outlook)
         Ticker.find({} , function(err, tickers) {
             // console.log(tickers)
             outlook.forEach(o => {
                 // console.log(o.ticker)
                 let document = Ticker.findOne({ 'ticker': o.ticker }, function(err, doc) {
                     if (!doc) {
-                        console.log('working right')
+                        // console.log('working right')
                         const newTicker = new Ticker(o)
                         newTicker.save(function (err) {})
                     }
@@ -41,33 +42,40 @@ async function index(req, res) {
 };
 
 function newTicker(req, res) {
-    res.render('tickers/new'), {title: 'Add Ticker'}
-}
-
-function formatTickerData(data) {
-    return data.map(t => ({
-        ticker : t.ticker,
-        name : t.name,
-        exchange: t.exchange_short,
-    
-    }))
+    //used to be tickers/new
+    res.render('tickers/show'), {title: 'Add Ticker'}
 }
 
 async function show(req, res) {
     const symbol = req.params.ticker;
     try {
-        const tickerData = await fetch(`${ROOT_URL}?symbols=${symbol}&api_token=${token}`)
-        .then(res => res.json()) 
-        .then(data => data.data)
-        let ticker = tickerData[0];
-        console.log(tickerData)
-        Ticker.findOne({ticker:symbol}, function(err, ticker){
-            // console.log(ticker, doc)
-            res.render('tickers/show', { ticker, title: symbol });
-        });
+        let tickerDoc = await Ticker.findOne({ticker: symbol});
+        if (tickerDoc) {
+            if (tickerDoc.updatedAt.toDateString() !== new Date().toDateString()) {
+                const tickerData = await fetch(`${ROOT_URL}?symbols=${symbol}&api_token=${token}`) .then(res => res.json());
+                tickerDoc = await Ticker.findOneAndUpdate({ticker: symbol}, formatTickerData(tickerData.data));
+            }
+        } else {
+            const tickerData = await fetch(`${ROOT_URL}?symbols=${symbol}&api_token=${token}`) .then(res => res.json());
+            tickerDoc = await Ticker.create(formatTickerData(tickerData.data));
+        }
+        res.render('tickers/show', { ticker: tickerDoc, title: symbol });
     } catch (err) {
         console.log(err)
-        const tickerData = null
-        res.render('tickers/index', { tickerData, title: symbol });
+        res.redirect('/');
     }
 };
+
+//helper function
+function formatTickerData(data) {
+    return data.map(t => ({
+        ticker : t.ticker,
+        name : t.name,
+        exchange: t.exchange_short,
+        price : t.price,
+        dayChange : t.day_change,
+        yearHigh : t['52_week_high'],
+        yearLow : t['52_week_low'],
+        volume : t.volume
+    }))
+}

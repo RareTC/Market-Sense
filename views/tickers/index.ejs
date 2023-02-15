@@ -21,16 +21,16 @@
     <% if (tickerData) { %>
       <% tickerData.forEach(function(t) { %> 
     <tr>
-          <td><%= t.ticker %></td>
-          <td><%= t.name %></td>
-          <td><%= t.exchange_short %></td>
-          <td><%= t.price %></td>
-          <td><%= t['52_week_high'] %></td>
-          <td><%= t['52_week_low'] %></td>
-          <td><%= t.day_change %></td>
-          <td><%= t.volume %></td>
-        </tr>
-        <a href="/tickers/<%= t.ticker%>">Share What You See!</a>
+      <td><%= t.ticker %></td>
+      <td><%= t.name %></td>
+      <td><%= t.exchange_short %></td>
+      <td><%= t.price %></td>
+      <td><%= t['52_week_high'] %></td>
+      <td><%= t['52_week_low'] %></td>
+      <td><%= t.day_change %></td>
+      <td><%= t.volume %></td>
+      <a href="/tickers/<%= t.ticker%>">Share What You See!</a>
+    </tr>
         <% }); %>
       <% } %>
       </tbody>

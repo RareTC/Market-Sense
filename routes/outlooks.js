@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const reviewsCtrl = require('../controllers/reviews');
+const outlooksCtrl = require('../controllers/outlooks');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // POST 
-router.post('/tickers/:id/reviews', ensureLoggedIn, reviewsCtrl.create);
+router.post('/tickers/:id/outlooks', ensureLoggedIn, outlooksCtrl.create);
 
 module.exports = router;

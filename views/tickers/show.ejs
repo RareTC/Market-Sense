@@ -1,13 +1,37 @@
 <%- include('../partials/header') %>
 
-<h1>Trading Ideas for *Insert Ticker Symbol* </h1>
-<div><%= ticker.ticker %></div>
-    <form action="/tickers/<%= ticker.ticker %>/reviews" method="POST">
+    <h1>Trading Ideas for *Insert Ticker Symbol* </h1>
+    <!-- will reference more data here, but this is from my API for live data.  -->
+    <div>
+        <%= ticker.ticker %>
+    </div>
+    <div>
+        <%= ticker.name %>
+    </div>
+    <div>
+        <%= ticker.exchange %>
+    </div>
+    <div>
+        <%= ticker.price %>
+    </div>
+    <div>
+        <%= ticker.dayChange %>
+    </div>
+    <div>
+        <%= ticker.yearHigh %>
+    </div>
+    <div>
+        <%= ticker.yearLow %>
+    </div>
+    <div>
+        <%= ticker.volume %>
+    </div>
+    <form action="/tickers/<%= ticker._id %>/outlooks" method="POST">
         <label>Outlook</label>
-            <select name="outlook">
-                <option value="Long">Long</option>
-                <option value="Short">Short</option>
-            </select>
+        <select name="position">
+            <option value="Long">Long</option>
+            <option value="Short">Short</option>
+        </select>
         <label>Timeframe</label>
         <select name="timeframe">
             <option value="Weeks">Weeks</option>
@@ -15,10 +39,9 @@
             <option value="years">Years</option>
         </select>
         <label>strategy</label>
-            <textarea name="strategy" cols="30" rows="10"></textarea>
-        <input type="submit" value="Add Review">
+        <textarea name="strategy" cols="30" rows="10"></textarea>
+        <input type="submit" value="Add Outlook">
     </form>
-  
+
 
     <%- include('../partials/footer') %>
-
