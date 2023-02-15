@@ -1,8 +1,8 @@
 <%- include('../partials/header') %>
 
 <h1>Trading Ideas for *Insert Ticker Symbol* </h1>
-<td><%= ticker.ticker %></td>
-    <form action="/reviews" method="POST">
+<div><%= ticker.ticker %></div>
+    <form action="/tickers/<%= ticker._id %>/reviews" method="POST">
         <label>Outlook</label>
             <select name="outlook">
                 <option value="Long">Long</option>

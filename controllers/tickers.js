@@ -21,9 +21,9 @@ async function index(req, res) {
         const outlook = formatTickerData (tickerData) 
         console.log(outlook)
         Ticker.find({} , function(err, tickers) {
-            console.log(tickers)
+            // console.log(tickers)
             outlook.forEach(o => {
-                console.log(o.ticker)
+                // console.log(o.ticker)
                 let document = Ticker.findOne({ 'ticker': o.ticker }, function(err, doc) {
                     if (!doc) {
                         console.log('working right')
@@ -63,7 +63,7 @@ async function show(req, res) {
         let ticker = tickerData[0];
         // console.log(tickerData)
         const outlook = Ticker.findOne({ticker:symbol}, function(err, doc){
-            console.log(ticker, doc)
+            // console.log(ticker, doc)
             res.render('tickers/show', { ticker, doc, title: symbol });
         });
     } catch (err) {

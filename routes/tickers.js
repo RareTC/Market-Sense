@@ -10,6 +10,8 @@ const ticker = require('../models/ticker');
 
 
 //all routes start with /movies
+
+// router.post('/tickers/ticker/reviews', ensureLoggedIn, reviewsCtrl.create);
 //GET
 router.get('/:ticker', ensureLoggedIn, tickersCtrl.show);
 
