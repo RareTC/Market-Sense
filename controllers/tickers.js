@@ -20,14 +20,10 @@ async function index(req, res) {
         .then(data => data.data)
         const err = null
         const outlook = formatTickerData (tickerData) 
-        // console.log(outlook)
         Ticker.find({} , function(err, tickers) {
-            // console.log(tickers)
             outlook.forEach(o => {
-                // console.log(o.ticker)
                 let document = Ticker.findOne({ 'ticker': o.ticker }, function(err, doc) {
                     if (!doc) {
-                        // console.log('working right')
                         const newTicker = new Ticker(o)
                         newTicker.save(function (err) {})
                     }

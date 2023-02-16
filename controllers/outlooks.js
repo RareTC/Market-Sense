@@ -2,13 +2,19 @@ const Ticker = require('../models/ticker');
 
 module.exports = {
     create, 
-    delete: deleteOutlook
+    delete: deleteOutlook,
+    // edit
 };
 
+// function edit(req, res) {
+//     console.log('am I in this function?')
+//     Ticker.findOne({'outlooks._id': req.params.id}, function(err, ticker) {
+//         const outlook = ticker.outlooks.id(req.params.id)
+//         res.render('outlooks/edit', {outlook})
+//     });
+// }
+
 function create(req,res) {
-    //findByOne returns review to first ticker in database
-    //find gets me down to the const obj and errors at ticker.reviews.push bc it is undefined
-    //findById does not run. 
     Ticker.findById(req.params.id, function(err, ticker) {
         req.body.user = req.user._id;
         req.body.userName = req.user.name;
