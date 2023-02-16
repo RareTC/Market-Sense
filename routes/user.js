@@ -16,14 +16,18 @@ router.get('/auth/google', passport.authenticate(
       prompt: 'select_account'
     }
   ));
+
+  router.get('/oauth2callback', function (req, res, next) {
+    const redirectTo = req.session.redirectTo;
+    delete req.session.redirectTo;
+    passport.authenticate(
+      'google',
+      {
+        successRedirect: redirectTo || '/', //-> replace '/' as desired
+        failureRedirect: '/'
+      }
+    )(req, res, next);  // Call the middleware returned by passport
+  });
   
-router.get('/oauth2callback', passport.authenticate(
-    'google',
-    {
-        successRedirect: '/movies',
-        // Change to what's best for YOUR app
-        failureRedirect: '/movies'
-    }
-    ));
 
 module.exports = router;
