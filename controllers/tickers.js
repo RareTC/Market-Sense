@@ -28,11 +28,11 @@ async function index(req, res) {
                     }
                 })
             })
-            res.render('tickers/index', { tickerData, title: 'ticker index page', err});
+            res.render('tickers/index', { tickerData, title: 'Results Page', err});
         });
     } catch (err) {
         const tickerData = null
-        res.render('tickers/index', { tickerData, title: 'ticker index page' });
+        res.render('tickers/index', { tickerData, title: 'Results Page' });
     }
 };
 

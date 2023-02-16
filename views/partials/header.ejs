@@ -9,17 +9,27 @@
   <title><%= title %></title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-sm bg-primary navbar-dark justify-content-center">
-    <a href="/"	<%- title === 'Home' ? 'class="active"' : '' %>>
-      Home</a>
-      <a href="/newsfeed"	<%- title === 'News' %>>
-      Market News</a>
-      <% if (user) { %>
-      <a href="/tickers"	<%- title === 'Investing Ideas' %>>
-        My Ideas</a>
-      <a class="nav-link" href="/logout">Log Out <img alt="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer"><%= user.name %></a>
-    <% } else { %>
-      <a class="nav-link" href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" class="Glogo"></a>
-    <% } %>
-  </nav>
+    <nav class="navbar navbar-expand-sm justify-content-between ">
+      <div class="container">
+      <div class="brand"><img 
+        class="d-inline-block align-center"
+        src="/images/logo.png" width:"30" height="30">
+      </div>
+          <a href="/"	<%- title === 'Home' ? 'class="active"' : '' %>>
+          Home</a>
+          <a href="/newsfeed"	<%- title === 'News' %>>
+          Market News</a>
+          <% if (user) { %>
+          <a href="/tickers"	<%- title === 'Investing Ideas' %>>
+            My Ideas</a>
+          <div class="user-container">
+          <img alt="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" class="avatar">
+            <p><%= user.name %><p>
+          <a class="nav-link" href="/logout">Log Out</a>
+          <% } else { %>
+            <a class="nav-link" href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" class="Glogo"></a>
+          <% } %>
+        </div>
+      </div>
+    </nav>
   <main>

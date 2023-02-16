@@ -1,14 +1,22 @@
 body {
+  background: url("/images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(35, 151, 172);
+  text-decoration: none;
+  font-size: 2vmin;
 }
+nav {
+  border-radius: 40px;
+  background-color: rgba(4, 97, 131, 0.7);
+}
+
 .login {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   height: 34px;
 }
@@ -17,6 +25,22 @@ a {
   height: 30px;
   width: 30px;
 }
-.nav-link {
-  justify-content: right;
+
+.avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;;
+}
+
+.container {
+  margin-left: 2vmin;
+}
+
+.user-container {
+  color: rgb(35, 151, 172);;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 2vmin;
+  margin-top: 1vmin;
 }
