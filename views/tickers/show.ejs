@@ -43,7 +43,7 @@
         <input type="submit" value="Add Outlook">
     </form>
 
-    <% if (ticker.outlooks.length) { %>
+    <% if (ticker && ticker.outlooks.length) { %>
         <table>
             <thead>
                 <tr>
@@ -67,9 +67,7 @@
                                 <form action="/outlooks/<%= o._id %>?_method=DELETE" method="POST">
                                     <button type="submit">Remove</button>
                                 </form>
-                                <!-- <form action="/outlooks/<%= o._id %>?_method=PUT" method="POST">
-                                    <button type="submit">Edit Outlook</button>
-                                </form> -->
+                                <button> <a href="/outlooks/<%= o._id %>/edit">Edit Outlook</a></button>
 
                             <% } %>
                         </td>

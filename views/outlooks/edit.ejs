@@ -1,5 +1,21 @@
 <%- include('../partials/header') %>
 
+<form action="/outlooks/<%= outlook._id %>?_method=PUT" method="POST">
+    <label>Position</label>
+    <select name="position" value="<%= outlook.position %>">
+        <option value="Long">Long</option>
+        <option value="Short">Short</option>
+    </select>
+    <label>Timeframe</label>
+    <select name="timeframe" value="<%= outlook.timeframe %>">
+        <option value="Weeks">Weeks</option>
+        <option value="Months">Months</option>
+        <option value="years">Years</option>
+    </select>
+    <label>strategy</label>
+    <textarea name="strategy" cols="30" rows="10" ><%= outlook.strategy %></textarea>
+    <input type="submit" value="Add Outlook">
+</form>
 
 
 <%- include('../partials/footer') %>

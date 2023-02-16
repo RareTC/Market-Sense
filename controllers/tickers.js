@@ -8,8 +8,7 @@ const ROOT_URL= 'https://api.stockdata.org/v1/data/quote';
 module.exports = {
     show,
     new: newTicker,
-    index
-  
+    index,
 };
 
 async function index(req, res) {
@@ -46,6 +45,7 @@ async function show(req, res) {
     const symbol = req.params.ticker;
     try {
         let tickerDoc = await Ticker.findOne({ticker: symbol});
+        console.log('looking at this console for now', tickerDoc)
         if (tickerDoc) {
             if (tickerDoc.updatedAt.toDateString() !== new Date().toDateString()) {
                 const tickerData = await fetch(`${ROOT_URL}?symbols=${symbol}&api_token=${token}`) .then(res => res.json());

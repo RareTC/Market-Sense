@@ -3,16 +3,31 @@ const Ticker = require('../models/ticker');
 module.exports = {
     create, 
     delete: deleteOutlook,
-    // edit
+    edit, 
+    update,
 };
 
-// function edit(req, res) {
-//     console.log('am I in this function?')
-//     Ticker.findOne({'outlooks._id': req.params.id}, function(err, ticker) {
-//         const outlook = ticker.outlooks.id(req.params.id)
-//         res.render('outlooks/edit', {outlook})
-//     });
-// }
+function edit(req, res) {
+    Ticker.findOne({'outlooks._id': req.params.id}, function(err, ticker) {
+        const outlook = ticker.outlooks.id(req.params.id)
+        res.render('outlooks/edit', {outlook, title: 'edit'})
+        console.log(outlook)
+    });
+}
+
+function update(req, res) {
+    Ticker.findOne({'outlooks._id': req.params.id, 'outlooks.user': req.user._id}, function(err, ticker) {
+        console.log(ticker, 'testing outlooks.id')
+        let outlookSubDoc = ticker.outlooks.id(req.params.id)
+        if(!outlookSubDoc.user.equals(req.user._id)) return res.redirect(`/tickers/${ticker._id}`);
+        outlookSubDoc.strategy = req.body.strategy;
+        ticker.save(function(err) {
+            console.log(err)
+            res.redirect(`/tickers/${ticker.ticker}`)
+        });
+    });
+}
+
 
 function create(req,res) {
     Ticker.findById(req.params.id, function(err, ticker) {
