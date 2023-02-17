@@ -12,7 +12,10 @@
   ##### Trevor Campbell
 
 [![LinkedIn Badge](https://img.shields.io/badge/-Trevor-blue?style=flat&logo=Linkedin&logoColor=black)](https://www.linkedin.com/in/trevor-campbell-a9188624a/)
-
+</div>
+  
+<div id="description-text">
+  
 ## :pencil: Description
 
 Market Sense is a community based full CRUD Web Application. It pulls up to date data from American Stock Exchanges utilizing an API and renders them on the website
