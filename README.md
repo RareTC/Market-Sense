@@ -74,3 +74,7 @@ having a community to bounce ideas off of and learn from is vital.
 - [:x:] Better UI for data render.
 
 - [:x:] Display graphing capability for stock history. 
+
+- [:x:] Pulling more frequent data or live data. 
+
+- [:x:] Pulling larger amounts of data. 
