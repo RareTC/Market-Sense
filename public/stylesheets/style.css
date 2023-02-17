@@ -18,9 +18,19 @@ a {
 nav {
   border-radius: 40px;
   background-color: rgba(4, 97, 131, 0.7);
+  margin-bottom: 4vmin;
 }
 
+.brand {
+  text-align: center;
+}
 
+.nav-link {
+  border: solid;
+  border-radius: 20px;
+  padding: 0.5em;
+  background-color: rgba(35, 151, 172, 0.3);;
+}
 
 .login {
   display: flex;
@@ -55,6 +65,11 @@ nav {
   /* margin-right: 2vmin; */
   margin-top: 1vmin;
 }
+
+main > p {
+  font-size: 20px;
+}
+
  #footer {
   background-color: rgba(4, 97, 131, 0.7);
  }
