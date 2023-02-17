@@ -1,27 +1,26 @@
 <%- include('../partials/header') %>
 
     <form class="d-flex" action="/newsfeed" method="GET">
-        <input class="form-control me-2" type="text" name="symbol" placeholder="Search a Company Ticker">
-        <button class="btn btn-primary" type="submit">Search</button>
+        <input class="form-control me-2 mb-4" type="text" name="symbol" placeholder="Search a Company Ticker">
+        <button class="btn btn-primary" id="search-button" type="submit">
+            <i class="fa fa-search"></i>
+        </button>
     </form>
-    <div class=" mb-2" style="max-width: 540px;;">
-        <% if (newsData) { %>
+
+    <% if (newsData) { %>
         <% newsData.forEach(function(n) { %>
-        <div class="row g-0">
-            <div class="col-md-2"></div>
-                <img src="<%= n.image_url %>" class="img-fluid rounded-start"> 
-            </div>
-            <div class="col-md-10">
-                <div class="'card-body">
-                    <h5 class="card-title"><%= n.title %></h5>
-                    <p class="card-text"><%= n.description %></p>
-                    <a href="<%= n.url %>">Link to Article</a>
-                    <p><%= n.published_at %></p>
+                <div class="card w-50 mx-auto" id="cards">
+                    <img class="card-img-top" src="<%= n.image_url %>" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= n.title %></h5>
+                        <p class="card-text"><%= n.description %></p>
+                        <p class="card-text"><%= n.published_at %></p>
+                    </div>
+                    <div class="card-body">
+                        <a href="<%= n.url %>" class="card-link">Link To Article</a>
+                    </div>
                 </div>
-            </div>
-        </div>
         <% }); %>
-        <% } %>
-    </div>
+    <% } %>
 
 <%- include('../partials/footer') %>
