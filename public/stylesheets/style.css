@@ -62,8 +62,13 @@ nav {
   text-align: center;
   display: inline-block;
   vertical-align: middle;
-  /* margin-right: 2vmin; */
   margin-top: 1vmin;
+}
+
+.review-user {
+  border-radius: 15px;
+  margin-top: 1vmin;
+  height: 50px;
 }
 
 main > p {
@@ -85,9 +90,37 @@ main > p {
   background-color: rgba(4, 97, 131, 0.7);
   color: rgb(35, 151, 172);
   border-radius: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
- #footer {
+#outlooks-form {
+  border: solid;
+  border-color: rgb(174, 235, 255);
+}
+
+#outlooks-form-select {
+  border: solid;
+  border-color: rgb(174, 235, 255);
+}
+
+#outlook-submit {
+  background: transparent;
+  border: transparent;
+}
+
+#remove-outlook {
+  background-color: rgba(4, 97, 131, 0.7);
+  color: rgb(174, 235, 255);
+  border-radius: 20px;
+}
+
+#strategy-form {
+  text-align: center;
+  padding: 1vmin;
+}
+
+#footer {
   background-color: rgba(4, 97, 131, 0.7);
  }
 

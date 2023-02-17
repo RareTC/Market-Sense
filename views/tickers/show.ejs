@@ -1,50 +1,52 @@
 <%- include('../partials/header') %>
+<h3>Updated Daily Data: </h3>
+<table class="table-bordered container-xxl mb-2" id="results">
+    <thead>
+      <th scope="col">Ticker:</th>
+      <th scope="col">Co. Name:</th>
+      <th scope="col">Listing Exchange:</th>
+      <th scope="col">Price:</th>
+      <th scope="col">52 Wk High:</th>
+      <th scope="col">52 Wk Low:</th>
+      <th scope="col">Day Change in Price:</th>
+      <th scope="col">Volume Traded:</th>
+    </thead>
+    <tbody>
+      <tr class="table-secondary">
+        <th class="result-font" scope="row"><%= ticker.ticker %></th>
+        <td class="result-font"><%= ticker.name %></td>
+        <td class="result-font"><%= ticker.exchange %></td>
+        <td class="result-font"><%= ticker.price %></td>
+        <td class="result-font"><%= ticker.yearHigh %></td>
+        <td class="result-font"><%= ticker.yearLow %></td>
+        <td class="result-font"><%= ticker.dayChange %></td>
+        <td class="result-font"><%= ticker.volume %></td>
+      </tr>
+    </tbody>
+</table>
 
-    <h1>Latest Data:</h1>
-    <!-- will reference more data here, but this is from my API for live data.  -->
-    <div>
-        <%= ticker.ticker %>
-    </div>
-    <div>
-        <%= ticker.name %>
-    </div>
-    <div>
-        <%= ticker.exchange %>
-    </div>
-    <div>
-        <%= ticker.price %>
-    </div>
-    <div>
-        <%= ticker.dayChange %>
-    </div>
-    <div>
-        <%= ticker.yearHigh %>
-    </div>
-    <div>
-        <%= ticker.yearLow %>
-    </div>
-    <div>
-        <%= ticker.volume %>
-    </div>
-    <form action="/tickers/<%= ticker._id %>/outlooks" method="POST">
-        <label>Position</label>
-        <select name="position">
-            <option value="Long">Long</option>
-            <option value="Short">Short</option>
-        </select>
-        <label>Timeframe</label>
-        <select name="timeframe">
-            <option value="Weeks">Weeks</option>
-            <option value="Months">Months</option>
-            <option value="years">Years</option>
-        </select>
-        <label>strategy</label>
-        <textarea name="strategy" cols="30" rows="10" placeholder="Please include data at time of outlook to refer back to. "></textarea>
-        <input type="submit" value="Add Outlook">
-    </form>
+<form action="/tickers/<%= ticker._id %>/outlooks" method="POST">
+        <div class="form-outline container-xxl justify-content-between mb-1" id="strategy-form">
+            <textarea class="form-control mb-2" name="strategy" rows="5" placeholder="Share your outlook below!"></textarea>
+            <label>Position</label>
+            <select class="select" name="position">
+                <option value="Long">Long</option>
+                <option value="Short">Short</option>
+            </select>
+            <label>Timeframe</label>
+            <select class="select" name="timeframe">
+                <option value="Weeks">Weeks</option>
+                <option value="Months">Months</option>
+                <option value="years">Years</option>
+            </select><br>
+            <button class="btn btn-secondary btn-rounded btn-sm mt-2" id="outlook-btn">
+                <input type="submit" value="Add Outlook" class="result-font" id="outlook-submit">
+            </button>
+        </div>
+</form>
 
     <% if (ticker && ticker.outlooks.length) { %>
-        <table>
+        <table class="table-bordered container-xxl mb-2" id="results">
             <thead>
                 <tr>
                     <th>User: </th>
@@ -52,12 +54,13 @@
                     <th>Timeframe:</th>
                     <th>Strategy:</th>
                     <th>Date made:</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <% ticker.outlooks.forEach(function(o) { %>
-                    <tr>
-                        <td class="review-user"><img alt="avatar" src="<%= o.userAvatar %>" referrerpolicy="no-referrer"><%= o.userName %></td>
+                    <tr class="result-font">
+                        <td class="review-user"><img class="review-user" alt="avatar" src="<%= o.userAvatar %>" referrerpolicy="no-referrer"><%= o.userName %></td>
                         <td><%= o.position %></td>
                         <td><%= o.timeframe %></td>
                         <td><%= o.strategy %></td>
@@ -65,9 +68,11 @@
                         <td>
                             <% if (user?._id.equals(o.user)) { %>
                                 <form action="/outlooks/<%= o._id %>?_method=DELETE" method="POST">
-                                    <button type="submit">Remove</button>
+                                    <button class="btn btn-secondary btn-rounded btn-sm mt-2" id="remove-outlook" type="submit">Remove</button>
                                 </form>
-                                <button> <a href="/outlooks/<%= o._id %>/edit">Edit Outlook</a></button>
+                                <button class="btn btn-secondary btn-rounded btn-sm mt-2" id="outlook-btn">
+                                    <a href="/outlooks/<%= o._id %>/edit" class="result-font">Edit</a>
+                                </button>
 
                             <% } %>
                         </td>
@@ -77,8 +82,7 @@
             </tbody>
         </table>
     <% } else { %>
-        <h5>No Outlooks made, be the first!</h5>
+        <h3>No Outlooks made, be the first!</h3>
     <% } %>
-
 
     <%- include('../partials/footer') %>
