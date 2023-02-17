@@ -37,7 +37,6 @@ async function index(req, res) {
 };
 
 function newTicker(req, res) {
-    //used to be tickers/new
     res.render('tickers/show'), {title: 'Add Ticker'}
 }
 
