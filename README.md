@@ -81,3 +81,5 @@ having a community to bounce ideas off of and learn from is vital.
 - [:x:] Pulling more frequent data or live data. 
 
 - [:x:] Pulling larger amounts of data. 
+
+- [:x:] Allowing partial searches for symbols/companies. 
