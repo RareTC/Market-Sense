@@ -48,7 +48,7 @@ async function show(req, res) {
         if (tickerDoc) {
             if (tickerDoc.updatedAt.toDateString() !== new Date().toDateString()) {
                 const tickerData = await fetch(`${ROOT_URL}?symbols=${symbol}&api_token=${token}`) .then(res => res.json());
-                tickerDoc = await Ticker.findOneAndUpdate({ticker: symbol}, formatTickerData(tickerData.data));
+                tickerDoc = await Ticker.findOneAndUpdate({ticker: symbol}, formatTickerData(tickerData.data)[0], {new: true});
             }
         } else {
             const tickerData = await fetch(`${ROOT_URL}?symbols=${symbol}&api_token=${token}`) .then(res => res.json());

@@ -36,6 +36,11 @@ nav {
   padding-right: 2vmin;
 }
 
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
+}
+
 .brand {
   text-align: center;
 }

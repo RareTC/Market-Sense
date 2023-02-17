@@ -26,7 +26,7 @@
           <a href="/newsfeed"	<%- title === 'News' %>>
           Market News</a>
           <% if (user) { %>
-          <a href="/tickers"	<%- title === 'Investing Ideas' %>>
+          <a href="/tickers" class="inactiveLink"		<%- title === 'Investing Ideas' %>>
             My Portfolio</a>
           <div class="user-container">
             <img alt="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" class="avatar">
