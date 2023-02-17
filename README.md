@@ -3,7 +3,7 @@
   <a href="https://imgur.com/PPJEEwU"><img src="https://i.imgur.com/PPJEEwU.jpg" title="source: imgur.com" width="800" height="400"/></a>
 </div>
 
-<div id="description" align="center">
+<div id="description">
 
   # Market Sense - A full CRUD Web Based Application
 
