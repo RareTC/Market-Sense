@@ -44,7 +44,7 @@ having a community to bounce ideas off of and learn from is vital.
 ![VSCode](https://img.shields.io/badge/-VS_Code-05122A?style=flat&logo=visualstudio)
 ![Heroku](https://img.shields.io/badge/-Heroku-05122A?style=flat&logo=heroku)
 ![Trello](https://img.shields.io/badge/-Trello-05122A?style=flat&logo=trello)
-![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=flat&logo=google-cloud&logoColor=white)
 
 ## :atom_symbol: Getting Started
 
