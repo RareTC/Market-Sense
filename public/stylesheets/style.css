@@ -1,3 +1,6 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
 body {
   background: url("/images/background.jpg") no-repeat center center fixed;
   background-size: cover;
@@ -26,6 +29,11 @@ nav {
   border-radius: 40px;
   background-color: rgba(4, 97, 131, 0.7);
   margin-bottom: 4vmin;
+}
+
+#navbar {
+  padding-left: 2vmin;
+  padding-right: 2vmin;
 }
 
 .brand {
