@@ -51,19 +51,16 @@ having a community to bounce ideas off of and learn from is vital.
 
 ## :atom_symbol: Getting Started
 
-<details open>
-  <summary> How To Search A Stock </summary>
+ ## How To Search A Stock 
     1. From the Home Page You can search in the search bar for the ticker/symbol of your interest. 
     2. Viewing data is accessible to anyone, but in order to interact or store any information on the database, a user must log in to their google account. 
     3. See something of interest? Click the "Share Your Thoughts" button and fill in the fields to gather feedback. 
     4. Want to see relevant news? Navigate to "Market News" in the Nav Bar and search for your ticker of interest. 
-</details>
 
-<details>
-  <summary> How to Interact With Others' Posts </summary>
+  ## How to Interact With Others' Posts 
     1. Upon searching for a ticker and clicking to share your thoughts, you will be able to see other members posts. 
     2. You may edit or delete your own posts if logged in.
-</details>
+
 
 
   ## :eyes: Upcoming Features
