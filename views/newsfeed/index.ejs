@@ -18,7 +18,8 @@
                         <div class="card-body">
                           <h5 class="card-title"><%= n.title %></h5>
                           <p class="card-text"><%= n.description %></p>
-                          <p class="card-text"><small class="text-muted"><%= n.published_at %> | <a href="<%= n.url %>" class="card-link">View </a></small></p>
+                          <p class="card-text"><small class="text-muted"><%= new Date(n.published_at).toLocaleDateString() %></small></p>
+                          <a href="<%= n.url %>" class="card-link">View </a>
                         </div>
                       </div>
                     </div>
