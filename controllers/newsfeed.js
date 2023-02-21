@@ -12,7 +12,7 @@ module.exports = {
 async function index(req, res) {
     const symbol = req.query.symbol;
     try {
-        const newsData = await fetch(`${ROOT_URL}?symbols=${symbol}&filter_entities=&language=en&api_token=${token}`)
+        const newsData = await fetch(`${ROOT_URL}?symbols=${symbol}&filter_entities=true&language=en&api_token=${token}`)
         .then(res => res.json()) 
         .then(data => data.data)
         const err = null

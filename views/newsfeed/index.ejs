@@ -9,17 +9,20 @@
 
     <% if (newsData) { %>
         <% newsData.forEach(function(n) { %>
-                <div class="card w-50 mx-auto" id="cards">
-                    <img class="card-img-top" src="<%= n.image_url %>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= n.title %></h5>
-                        <p class="card-text"><%= n.description %></p>
-                        <p class="card-text"><%= n.published_at %></p>
+                <div class="card mb-3 w-100">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img class="card-img-top" src="<%= n.image_url %>">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= n.title %></h5>
+                          <p class="card-text"><%= n.description %></p>
+                          <p class="card-text"><small class="text-muted"><%= n.published_at %> | <a href="<%= n.url %>" class="card-link">View </a></small></p>
+                        </div>
+                      </div>
                     </div>
-                    <div class="card-body">
-                        <a href="<%= n.url %>" class="card-link">Link To Article</a>
-                    </div>
-                </div>
+                  </div>
         <% }); %>
     <% } %>
 
