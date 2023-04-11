@@ -28,7 +28,6 @@ function update(req, res) {
     });
 }
 
-
 function create(req,res) {
     Ticker.findById(req.params.id, function(err, ticker) {
         req.body.user = req.user._id;

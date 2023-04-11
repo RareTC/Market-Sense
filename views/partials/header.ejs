@@ -9,34 +9,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/46d2bf60fb.js" crossorigin="anonymous"></script>
   <link rel="icon" type="image/x-icon" href="images/logo.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <title><%= title %></title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm justify-content-between" id="navbar">
-      <div class="container-xxl">
-      <div class="brand">
-        <h3>Market</h3>
-        <img class="d-inline-block align-center" src="/images/logo.png" width:"30" height="30">
-        <h3>Sense</h3>
-      </div>
-          <a href="/"	<%- title === 'Home' ? 'class="active"' : '' %>>
-          Home</a>
-          <a href="/newsfeed"	<%- title === 'News' %>>
-          Market News</a>
-          <% if (user) { %>
-          <a href="/tickers" class="inactiveLink"		<%- title === 'Investing Ideas' %>>
-            My Portfolio</a>
-          <div class="user-container">
-            <img alt="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" class="avatar">
-            <div class="user-logout">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+  <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container-fluid" id="navbar-container">
+      <a class="navbar-brand" href="/">Market Sense
+        <img class="d-inline-block align-center" src="/images/logo.png" width:"30" height="30" id="filter">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="navBody">
+          <ul class="navbar-nav d-flex justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/"	<%- title === 'Home'%>>
+                Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/newsfeed"	<%- title === 'News' %>>
+                Market News </a>
+            </li>
+            <li class="nav-item">
+              <% if (user) { %>
+              <a class="nav-link active" id="logout-wrapper" aria-current="page"  href="/logout">
+                <img alt="avatar" src="<%= user.avatar %>" referrerpolicy="no-referrer" class="avatar">
                 <p><%= user.name %><p>
-              <a class="nav-link" href="/logout">Log Out</a>
-            </div>
-            <% } else { %>
-            <a class="nav-link" href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" class="Glogo"></a>
-            <% } %>
+                Logout 
+              </a>
+                <% } else { %>
+                  <a class="nav-link" href="/auth/google" class="login">Log In&nbsp;
+                    <img src="https://i.imgur.com/FHjYyi0.png" class="Glogo">
+                  </a>
+                  <% } %>
+            </li>
+          </ul>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
