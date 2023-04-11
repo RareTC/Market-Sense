@@ -1,45 +1,37 @@
 <%- include('../partials/header') %>
 
-<form class="d-flex justify-content-center h-100 mb-3" action="/tickers" method="GET">
+<form class="d-flex justify-content-center h-100 mb-3" id="searchBar2" action="/tickers" method="GET">
   <input class="form-control me-2" type="text" name="symbol" placeholder="Search by Ticker, separate with a comma - Ex:  SOFI, AAPL, GOOGL">
   <button class="btn btn-primary" id="search-button" type="submit">
     <i class="fa fa-search"></i>
   </button>
 </form>
-<table class="table-bordered container-xxl" id="results">
-  <thead>
-    <th scope="col">Ticker:</th>
-    <th scope="col">Co. Name:</th>
-    <th scope="col">Listing Exchange:</th>
-    <th scope="col">Price:</th>
-    <th scope="col">52 Wk High:</th>
-    <th scope="col">52 Wk Low:</th>
-    <th scope="col">Day Change in Price:</th>
-    <th scope="col">Volume Traded:</th>
-    <th scope="col">Add Outlook Below</th>
-  </thead>
-  <tbody>
-    <% if (tickerData) { %>
-      <% tickerData.forEach(function(t) { %> 
-    <tr class="table-secondary">
-      <th class="result-font" scope="row"><%= t.ticker %></th>
-      <td class="result-font"><%= t.name %></td>
-      <td class="result-font"><%= t.exchange_short %></td>
-      <td class="result-font"><%= t.price %></td>
-      <td class="result-font"><%= t['52_week_high'] %></td>
-      <td class="result-font"><%= t['52_week_low'] %></td>
-      <td class="result-font"><%= t.day_change %></td>
-      <td class="result-font"><%= t.volume %></td>
-      <td class="result-font">
-        <button class="btn btn-secondary btn-rounded btn-sm" id="outlook-btn">
-          <a href="/tickers/<%= t.ticker%>" class="result-font">Share Your Thoughts!</a>
-        </button>
-      </td>
-    </tr>
-    <% }); %>
+
+
+<% if (tickerData) { %>
+  <% tickerData.forEach(function(t, index) { %> 
+    <% if (index % 3 === 0) { %>
+    <div class="row">
+      <% } %>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Symbol: <%= t.ticker %> </h5>
+            <p class="card-text">Company: <%= t.name %></p>
+            <p class="card-text">Price: $<%= t.price %></p>
+            <p class="card-text">Listing Exchange: <%= t.exchange_short %></p>
+            <p class="card-text">52 wk. high: $<%= t['52_week_high'] %></p>
+            <p class="card-text">52 wk. low: $<%= t['52_week_low'] %></p>
+            <p class="card-text">Day Change: $<%= t.day_change %></p>
+            <p class="card-text">Daily Volume: <%= t.volume %></p>
+            <a href="/tickers/<%= t.ticker%>" class="btn btn-primary">Share Your Thoughts!</a>
+          </div>
+        </div>
+      </div>
+      <% if (index % 3 === 2 || index === tickerData.length - 1) { %>
     <% } %>
-  </tbody>
-</table>
+  <% }); %>
+<% } %>
 
 
 
