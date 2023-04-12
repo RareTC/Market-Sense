@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<h3>Updated Daily Data: </h3>
+<h2>Updated Daily Data: </h2>
 <table class="table-bordered container-xxl mb-2" id="results">
     <thead>
       <th scope="col">Ticker:</th>
@@ -45,44 +45,46 @@
         </div>
 </form>
 
-    <% if (ticker && ticker.outlooks.length) { %>
-        <table class="table-bordered container-xxl mb-2" id="results">
-            <thead>
-                <tr>
-                    <th>User: </th>
-                    <th>Position:</th>
-                    <th>Timeframe:</th>
-                    <th>Strategy:</th>
-                    <th>Date made:</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <% ticker.outlooks.forEach(function(o) { %>
-                    <tr class="result-font">
-                        <td class="review-user"><img class="review-user" alt="avatar" src="<%= o.userAvatar %>" referrerpolicy="no-referrer"><%= o.userName %></td>
-                        <td><%= o.position %></td>
-                        <td><%= o.timeframe %></td>
-                        <td><%= o.strategy %></td>
-                        <td><%= o.createdAt.toLocaleDateString() %></td>
-                        <td>
-                            <% if (user?._id.equals(o.user)) { %>
-                                <form action="/outlooks/<%= o._id %>?_method=DELETE" method="POST">
-                                    <button class="btn btn-secondary btn-rounded btn-sm mt-2" id="remove-outlook" type="submit">Remove</button>
-                                </form>
-                                <button class="btn btn-secondary btn-rounded btn-sm mt-2" id="outlook-btn">
-                                    <a href="/outlooks/<%= o._id %>/edit" class="result-font">Edit</a>
-                                </button>
 
-                            <% } %>
-                        </td>
-                    </tr>
+<% if (ticker && ticker.outlooks.length) { %>
+    <div class="row">
+      <% ticker.outlooks.forEach(function(o, i) { %>
+        <div class="col-md-6">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-2">
+                <img src="<%= o.userAvatar %>" class="img-fluid rounded-start" alt="...">
+                <p><%= o.userName %></p>
+              </div>
+              <div class="col-md-10">
+                <div class="card-body">
+                  <p class="card-text">Position: <%= o.position %></p>
+                  <p class="card-text">TimeFrame: <%= o.timeframe %></p>
+                  <p class="card-text">Outlook: <%= o.strategy %></p>
+                  <p class="card-text"><small class="text-muted"><%= o.createdAt.toLocaleDateString() %></small></p>
+                </div>
+                <% if (user?._id.equals(o.user)) { %>
+                <div class="outlook-wrapper">
+                  <form action="/outlooks/<%= o._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-secondary btn-rounded btn-sm mt-2" id="remove-outlook" type="submit">Remove</button>
+                  </form>
+                  <button class="btn btn-secondary btn-rounded btn-sm mt-2" id="outlook-btn">
+                    <a href="/outlooks/<%= o._id %>/edit" class="result-font">Edit</a>
+                  </button>
+                </div>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% if ((i + 1) % 2 === 0) { %>
+          </div><div class="row">
+        <% } %>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <h2>No Outlooks made, be the first!</h2>
+  <% } %>
 
-                <% }) %>
-            </tbody>
-        </table>
-    <% } else { %>
-        <h3>No Outlooks made, be the first!</h3>
-    <% } %>
 
     <%- include('../partials/footer') %>
