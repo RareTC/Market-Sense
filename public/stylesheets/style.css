@@ -2,11 +2,13 @@
   font-family: 'Inter', sans-serif;
 }
 
+
 body {
   background: url("/images/background.jpg");
   background-position: center; 
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: rgb(20, 87, 103);
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: rgb(35, 151, 172);
   padding-left: 20px;
@@ -94,22 +96,14 @@ h2 {
   text-align: center;
 }
 
-/* #cards {
-  background-color: rgba(48, 111, 150, 0.4);
-  color: rgb(174, 235, 255);
-  border-color: rgb(174, 235, 255);
-  text-align: center;
-  display: flex;
-  margin-bottom: 2vmin;
-} */
-
-
 #results {
   background-color: rgba(48, 111, 150, 0.4);
   color: rgb(35, 151, 172);
   border-color: rgb(174, 235, 255);
   text-align: center;
   align-items: center;
+  width: 600px;
+  margin: 0 auto;
 }
 
 .result-font {
@@ -120,8 +114,15 @@ h2 {
   background-color: rgba(4, 97, 131, 0.7);
   color: rgb(35, 151, 172);
   border-radius: 20px;
+  border: solid 2px #f5f7f6;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+#outlook-btn:hover {
+  background-color: #f5f7f6;
+  color: rgb(35,151,172);
+  border: solid 2px rgb(35,151,172);
 }
 
 #outlooks-form {
@@ -145,9 +146,22 @@ h2 {
   border-radius: 20px;
 }
 
+#remove-outlook:hover {
+  color: rgba(4, 97, 131, 0.7);
+  background-color: rgb(174, 235, 255);
+  border-radius: 20px;
+  border: solid 2 px rgb(4, 97, 131);
+}
+
+#outlook-btn a {
+  text-decoration: none !important;
+  padding: 7px;
+}
+
 #strategy-form {
   text-align: center;
   padding: 1vmin;
+  width: 50%
 }
 
 #footer {
@@ -166,4 +180,19 @@ h2 {
     margin-left: auto;
     margin-right: 10px;
   }
+
+  #strategy-form {
+    width: 100%;
+  }
+
+  #results {
+    width: 90%;
+  }
+  
+  html {
+    display: flex;
+    justify-content: center;
+    margin-left: 30px;
 }
+  }
+  

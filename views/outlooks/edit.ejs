@@ -2,14 +2,14 @@
 
 <form action="/outlooks/<%= outlook._id %>?_method=PUT" method="POST">
     <div class="form-outline container-xxl justify-content-between mb-1" id="strategy-form">
-        <textarea class="form-control mb-2" name="strategy" rows="5" placeholder="<%= outlook.strategy %>"></textarea>
+        <textarea class="form-control mb-2 col-3" name="strategy" rows="5" placeholder="<%= outlook.strategy %>"></textarea>
         <label>Position</label>
-        <select class="select" name="position" value="<%= outlook.position %>">
+        <select class="form-select" name="position" value="<%= outlook.position %>">
             <option value="Long">Long</option>
             <option value="Short">Short</option>
         </select>
         <label>Timeframe</label>
-        <select class="select" name="timeframe" value="<%= outlook.timeframe %>">
+        <select class="form-select" name="timeframe" value="<%= outlook.timeframe %>">
             <option value="Weeks">Weeks</option>
             <option value="Months">Months</option>
             <option value="years">Years</option>
