@@ -2,10 +2,9 @@
   font-family: 'Inter', sans-serif;
 }
 
-
 body {
   background: url("/images/background.jpg");
-  background-position: bottom; 
+  background-position: center; 
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgb(20, 87, 103);
